@@ -24,3 +24,11 @@ describe('kaomangai()', () => {
 		expect(kaomangai('-AAA-', 14)).toBe('-AAA-kaomangai');
 	});
 });
+
+describe('hello thai()', () => {
+	it('thai correctly', () => {
+		expect.assertions(1);
+
+		expect(padthai(' Hello Cook ', 20)).toBe('padt Hello Cook padt');
+	});
+});
