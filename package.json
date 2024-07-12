@@ -1,6 +1,6 @@
 {
   "name": "thaifood",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,6 @@
     "typescript": "^5.5.3"
   },
   "files": [
-    "src/*",
-    "*.jpg"
+    "src/*"
   ]
 }
