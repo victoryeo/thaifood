@@ -109,7 +109,10 @@ jobs:
   #      with:
   #        name: myartifact
       - name: list files
-        run: ls -la    
+        run: |
+          ls -la 
+          ls -la zeto
+          ls -la zeto/solidity
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2          
       - name: Login to Docker Hub
