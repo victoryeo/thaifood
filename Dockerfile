@@ -5,4 +5,4 @@ FROM alpine:3.10
 #COPY entrypoint.sh /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-COPY zeto/solidity/contracts /solidity/contracts
+COPY ./solidity/contracts /solidity/contracts

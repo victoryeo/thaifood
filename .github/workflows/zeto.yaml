@@ -100,15 +100,14 @@ jobs:
           ls ../proving-keys -la
       - uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
-          path: ./zeto           
+          name: myartifact
+          path: ./zeto  
   build-container:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: my-artifact
-          path: ./zeto    
+          name: myartifact
       - name: list files
         run: ls -la    
       - name: Set up Docker Buildx
