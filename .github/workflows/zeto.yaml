@@ -101,6 +101,8 @@ jobs:
   build-container:
     runs-on: ubuntu-latest
     steps:          
+      - name: list files
+        run: ls -la    
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2          
       - name: Login to Docker Hub
