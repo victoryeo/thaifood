@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: zeto
+    working-directory: ./
 jobs:
   circom-build-circuit:
     runs-on: ubuntu-latest
@@ -18,7 +18,6 @@ jobs:
       - name: install circom
         run: |
           pwd
-          mkdir -p zeto
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
           git clone https://github.com/iden3/circom.git
           cd circom
@@ -130,7 +129,7 @@ jobs:
       - name: Build and push 
         uses: docker/build-push-action@v4
         with:
-          context: zeto
+          context: ./
           push: true
           tags: victoryeo/zeto:latest          
 
