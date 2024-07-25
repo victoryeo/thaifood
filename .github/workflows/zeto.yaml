@@ -98,16 +98,16 @@ jobs:
           snarkjs zkey export solidityverifier ../proving-keys/nf_anon.zkey ../solidity/contracts/lib/verifier_nf_anon.sol
           snarkjs zkey export solidityverifier ../proving-keys/nf_anon_nullifier.zkey ../solidity/contracts/lib/verifier_nf_anon_nullifier.sol
           ls ../proving-keys -la
-      - uses: actions/upload-artifact@v4
-        with:
-          name: myartifact
-          path: ./zeto  
-  build-container:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: myartifact
+  #    - uses: actions/upload-artifact@v4
+  #      with:
+  #        name: myartifact
+  #        path: ./zeto  
+  #build-container:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/download-artifact@v4
+  #      with:
+  #        name: myartifact
       - name: list files
         run: ls -la    
       - name: Set up Docker Buildx
