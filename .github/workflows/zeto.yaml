@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - '.github/workflows/zeto.yaml'
+
+defaults:
+  run:
+    working-directory: ./zeto
 jobs:
   circom-build-circuit:
     runs-on: ubuntu-latest
@@ -110,6 +114,7 @@ jobs:
   #        name: myartifact
       - name: list files
         run: |
+          pwd
           ls -la 
           ls -la zeto
           ls -la zeto/solidity
@@ -123,6 +128,7 @@ jobs:
       - name: Build and push 
         uses: docker/build-push-action@v4
         with:
+          context: ./zeto
           push: true
           tags: victoryeo/zeto:latest          
 
