@@ -83,6 +83,16 @@ jobs:
           snarkjs groth16 setup ../proving-keys/anon_enc_nullifier.r1cs ../proving-keys/powersOfTau28_hez_final_16.ptau ../proving-keys/anon_enc_nullifier.zkey
           snarkjs groth16 setup ../proving-keys/nf_anon.r1cs ../proving-keys/powersOfTau28_hez_final_11.ptau ../proving-keys/nf_anon.zkey
           snarkjs groth16 setup ../proving-keys/nf_anon_nullifier.r1cs ../proving-keys/powersOfTau28_hez_final_15.ptau ../proving-keys/nf_anon_nullifier.zkey
+      - name: per-circuit set up ceremony on proving keys
+        run: |
+          cd zeto
+          cd zkp/
+          snarkjs zkey contribute ../proving-keys/anon.zkey ../proving-keys/anon_new.zkey --name="contribution" -v -e="random entropy"
+          snarkjs zkey contribute ../proving-keys/anon_enc.zkey ../proving-keys/anon_enc_new.zkey --name="contribution" -v -e="random entropy"
+          snarkjs zkey contribute ../proving-keys/anon_nullifier.zkey ../proving-keys/anon_nullifier_new.zkey --name="contribution" -v -e="random entropy"
+          snarkjs zkey contribute ../proving-keys/anon_enc_nullifier.zkey ../proving-keys/anon_enc_nullifier_new.zkey --name="contribution" -v -e="random entropy"
+          snarkjs zkey contribute ../proving-keys/nf_anon.zkey ../proving-keys/nf_anon_new.zkey --name="contribution" -v -e="random entropy"
+          snarkjs zkey contribute ../proving-keys/nf_anon_nullifier.zkey ../proving-keys/nf_anon_nullifier_new.zkey --name="contribution" -v -e="random entropy"
       - name: generate verfication keys
         run: |
           cd zeto
