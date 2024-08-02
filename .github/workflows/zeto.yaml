@@ -120,12 +120,12 @@ jobs:
         run: |
           cd zeto
           cd contracts-lib
-          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_nf_anon.sol > ../solidity/contracts/lib/verifier_anon.sol
-          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_anon_enc.sol > ../solidity/contracts/lib/verifier_anon_enc.sol
-          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_anon_nullifier.sol > ../solidity/contracts/lib/verifier_anon_nullifier.sol
-          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_anon_enc_nullifier.sol > ../solidity/contracts/lib/verifier_anon_enc_nullifier.sol
+          sed 's/Groth16Verifier/Groth16Verifier_Anon/' verifier_anon.sol > ../solidity/contracts/lib/verifier_anon.sol
+          sed 's/Groth16Verifier/Groth16Verifier_AnonEnc/' verifier_anon_enc.sol > ../solidity/contracts/lib/verifier_anon_enc.sol
+          sed 's/Groth16Verifier/Groth16Verifier_AnonNullifier/' verifier_anon_nullifier.sol > ../solidity/contracts/lib/verifier_anon_nullifier.sol
+          sed 's/Groth16Verifier/Groth16Verifier_AnonEncNullifier/' verifier_anon_enc_nullifier.sol > ../solidity/contracts/lib/verifier_anon_enc_nullifier.sol
           sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_nf_anon.sol > ../solidity/contracts/lib/verifier_nf_anon.sol
-          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_nf_anon_nullifier.sol > ../solidity/contracts/lib/verifier_nf_anon_nullifier.sol
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnonNullifier/' verifier_nf_anon_nullifier.sol > ../solidity/contracts/lib/verifier_nf_anon_nullifier.sol
   #    - uses: actions/upload-artifact@v4
   #      with:
   #        name: myartifact
