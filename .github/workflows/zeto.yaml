@@ -105,15 +105,27 @@ jobs:
           snarkjs zkey export verificationkey ../proving-keys/nf_anon_nullifier_new.zkey ../proving-keys/nf_anon_nullifier-vkey.json
       - name: generate solidity verifier library
         run: |
+          mkdir -p ./zeto/contracts-lib
           cd zeto
           cd zkp/
-          snarkjs zkey export solidityverifier ../proving-keys/anon_new.zkey ../solidity/contracts/lib/verifier_anon.sol
-          snarkjs zkey export solidityverifier ../proving-keys/anon_enc_new.zkey ../solidity/contracts/lib/verifier_anon_enc.sol
-          snarkjs zkey export solidityverifier ../proving-keys/anon_nullifier_new.zkey ../solidity/contracts/lib/verifier_anon_nullifier.sol
-          snarkjs zkey export solidityverifier ../proving-keys/anon_enc_nullifier_new.zkey ../solidity/contracts/lib/verifier_anon_enc_nullifier.sol
-          snarkjs zkey export solidityverifier ../proving-keys/nf_anon_new.zkey ../solidity/contracts/lib/verifier_nf_anon.sol
-          snarkjs zkey export solidityverifier ../proving-keys/nf_anon_nullifier_new.zkey ../solidity/contracts/lib/verifier_nf_anon_nullifier.sol
+          snarkjs zkey export solidityverifier ../proving-keys/anon_new.zkey ../contracts-lib/verifier_anon.sol
+          snarkjs zkey export solidityverifier ../proving-keys/anon_enc_new.zkey ../contracts-lib/verifier_anon_enc.sol
+          snarkjs zkey export solidityverifier ../proving-keys/anon_nullifier_new.zkey ../contracts-lib/verifier_anon_nullifier.sol
+          snarkjs zkey export solidityverifier ../proving-keys/anon_enc_nullifier_new.zkey ../contracts-lib/verifier_anon_enc_nullifier.sol
+          snarkjs zkey export solidityverifier ../proving-keys/nf_anon_new.zkey ../contracts-lib/verifier_nf_anon.sol
+          snarkjs zkey export solidityverifier ../proving-keys/nf_anon_nullifier_new.zkey ../contracts-lib/verifier_nf_anon_nullifier.sol
           ls ../proving-keys -la
+          ls ../contracts-lib -la
+      - name: edit solidity files
+        run: |
+          cd zeto
+          cd contracts-lib
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_nf_anon.sol > ../solidity/contracts/lib/verifier_anon.sol
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_anon_enc.sol > ../solidity/contracts/lib/verifier_anon_enc.sol
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_anon_nullifier.sol > ../solidity/contracts/lib/verifier_anon_nullifier.sol
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_anon_enc_nullifier.sol > ../solidity/contracts/lib/verifier_anon_enc_nullifier.sol
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_nf_anon.sol > ../solidity/contracts/lib/verifier_nf_anon.sol
+          sed 's/Groth16Verifier/Groth16Verifier_NFAnon/' verifier_nf_anon_nullifier.sol > ../solidity/contracts/lib/verifier_nf_anon_nullifier.sol
   #    - uses: actions/upload-artifact@v4
   #      with:
   #        name: myartifact
